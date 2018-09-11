@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"os"
+	"strconv"
 	"strings"
 )
 
@@ -17,20 +19,21 @@ func solve(mealCost float64, tipPercent int32, taxPercent int32) {
 }
 
 func main() {
-	// reader := bufio.NewReaderSize(os.Stdin, 1024*1024)
+	reader := bufio.NewReaderSize(os.Stdin, 1024*1024)
 
-	// mealCost, err := strconv.ParseFloat(readLine(reader), 64)
-	// checkError(err)
+	mealCost, err := strconv.ParseFloat(readLine(reader), 64)
+	checkError(err)
 
-	// tipPercentTemp, err := strconv.ParseInt(readLine(reader), 10, 64)
-	// checkError(err)
-	// tipPercent := int32(tipPercentTemp)
+	tipPercentTemp, err := strconv.ParseInt(readLine(reader), 10, 64)
+	checkError(err)
+	tipPercent := int32(tipPercentTemp)
 
-	// taxPercentTemp, err := strconv.ParseInt(readLine(reader), 10, 64)
-	// checkError(err)
-	// taxPercent := int32(taxPercentTemp)
+	taxPercentTemp, err := strconv.ParseInt(readLine(reader), 10, 64)
+	checkError(err)
+	taxPercent := int32(taxPercentTemp)
 
-	solve(10.25, 17, 5)
+	// solve(10.25, 17, 5)
+	solve(mealCost, tipPercent, taxPercent)
 }
 
 func readLine(reader *bufio.Reader) string {

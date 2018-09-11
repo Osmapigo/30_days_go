@@ -1,37 +1,15 @@
 package main
 
 import (
-	"bufio"
+	"30_days_go/readerpkg"
 	"fmt"
-	"io"
-	"os"
-	"strconv"
-	"strings"
 )
 
 func main() {
-	reader := bufio.NewReaderSize(os.Stdin, 1024*1024)
 	message := "Not Weird"
-	NTemp, err := strconv.ParseInt(readLine(reader), 10, 64)
-	checkError(err)
-	N := int32(NTemp)
-	if N%2 != 0 || (N > 5 && N <= 20) {
+	Number := readerpkg.ReadInt()
+	if Number%2 != 0 || (Number > 5 && Number <= 20) {
 		message = "Weird"
 	}
 	fmt.Println(message)
-}
-
-func readLine(reader *bufio.Reader) string {
-	str, _, err := reader.ReadLine()
-	if err == io.EOF {
-		return ""
-	}
-
-	return strings.TrimRight(string(str), "\r\n")
-}
-
-func checkError(err error) {
-	if err != nil {
-		panic(err)
-	}
 }
