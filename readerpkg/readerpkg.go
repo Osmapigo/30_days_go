@@ -15,6 +15,13 @@ func ReadInt() int64 {
 	return Number
 }
 
+// ReadStr get the integer from the commad line
+func ReadStr() string {
+	reader := bufio.NewReaderSize(os.Stdin, 1024*1024)
+	str := readLine(reader)
+	return str
+}
+
 func readLine(reader *bufio.Reader) string {
 	str, _, err := reader.ReadLine()
 	if err == io.EOF {

@@ -1,19 +1,23 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"io"
-	"os"
-	"strconv"
-	"strings"
 )
 
+// func main() {
+// 	numberOfCases := readerpkg.ReadInt()
+// 	for index := 0; index < int(numberOfCases); index++ {
+// 		inputString := readerpkg.ReadStr()
+// 		printLetters(inputString)
+// 	}
+// }
+
 func main() {
-	reader := bufio.NewReaderSize(os.Stdin, 1024*1024)
-	numberOfCases, _ := strconv.ParseInt(readLine(reader), 10, 0)
+	var numberOfCases int
+	var inputString string
+	fmt.Scan(&numberOfCases)
 	for index := 0; index < int(numberOfCases); index++ {
-		inputString := readLine(reader)
+		fmt.Scan(&inputString)
 		printLetters(inputString)
 	}
 }
@@ -29,19 +33,4 @@ func printLetters(inputString string) {
 		}
 	}
 	fmt.Println(evenLetters + " " + oddLetters)
-}
-
-func readLine(reader *bufio.Reader) string {
-	str, _, err := reader.ReadLine()
-	if err == io.EOF {
-		return ""
-	}
-
-	return strings.TrimRight(string(str), "\r\n")
-}
-
-func checkError(err error) {
-	if err != nil {
-		panic(err)
-	}
 }
